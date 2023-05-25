@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
+// Import Bootstrap components
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 // Import components
 import MovieList from './components/MovieList';
+
 
 const App = () => {
   const [movies, setMovies] = useState([
@@ -16,9 +21,20 @@ const App = () => {
 
     },
   ]);
+
+  // Get movie data from API
+  const getMovieRequest = async () => {
+    const url = `https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_API_KEY}`;
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    console.log(responseJson);
+  };
+
   return ( 
-  <div>
+  <div className='container-fluid movie-app'>
+    <div className='row'>
     <MovieList movies={movies} />
+    </div>
   </div>
   );
 }
