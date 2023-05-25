@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+
+// Import components
 import MovieList from './components/MovieList';
 
 const App = () => {
   const [movies, setMovies] = useState([
 
+    // Data movies in JSON format
     {
       "id": 3,
       "title": "Fight Club",
